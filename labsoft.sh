@@ -180,7 +180,7 @@ wget https://github.com/Kitware/CMake/releases/download/v3.22.4/cmake-3.22.4.tar
 tar zxvf cmake-3.22.4.tar.gz
 cd cmake-3.22.4
 ./bootstrap
-make -j 4
+make -j $np
 " >> $Loc
 apt-get install build-essential -y
 mkdir -p $DIR/CMAKE
