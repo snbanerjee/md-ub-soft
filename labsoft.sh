@@ -33,6 +33,7 @@ INSTALL_USER=`whoami`
 ENV_USER=`cat /etc/passwd | grep bash | awk '(NR>1)' |  sed s/:/\\n/ | awk '{print $1; exit}'`
 ENV_USER_PATH=/home/$ENV_USER/.bashrc
 OS=`lsb_release -d | awk '{print $2}'`
+echo " " >> $Loc
 echo Machine OS is $OS >> $Loc
 echo " " >> $Loc
 cd /opt
@@ -185,11 +186,10 @@ apt-get install build-essential -y
 mkdir -p $DIR/CMAKE
 cd $DIR/CMAKE
 wget https://github.com/Kitware/CMake/releases/download/v3.22.4/cmake-3.22.4.tar.gz .
-#wget http://www.cmake.org/files/v3.2/cmake-3.2.2.tar.gz .
 tar zxvf cmake-3.22.4.tar.gz
 cd cmake-3.22.4
 ./bootstrap
-make -j 4
+make -j $np
 make install
         }
 fi
@@ -242,9 +242,8 @@ echo " " >> $Loc
 ### Download and Install NAMD-2.14 ###
 mkdir -p $DIR/NAMD
 cd $DIR/NAMD
-cp -rpvf /home/ub/ch520/tarballs/NAMD_2.14_Linux-x86_64-multicore.tar.gz .
-#wget 10.0.137.150:/Public/SNB/tarballs/NAMD_2.14_Linux-x86_64-multicore.tar
-tar zxvf NAMD_2.14_Linux-x86_64-multicore.tar.gz
+wget https://istf.iitgn.ac.in/sites/default/files/Software/labsoft/tarballs/NAMD_2.14_Linux-x86_64-multicore.tar.gz --no-check-certificate
+tar xvf NAMD_2.14_Linux-x86_64-multicore.tar.gz
 cd NAMD_2.14_Linux-x86_64-multicore
 export PATH=$PATH:"$DIR/NAMD/NAMD_2.14_Linux-x86_64-multicore" >> $ENV_USER_PATH
 source $ENV_USER_PATH
@@ -340,10 +339,8 @@ cd ~
 apt install -y tcsh
 mkdir -p $DIR/VMD
 cd $DIR/VMD
-cp -rpvf /home/ub/ch520/tarballs/vmd-1.9.3.src.tar.gz .
-#wget 10.0.137.150:/Public/SNB/tarballs/vmd-1.9.3.src.tar.gz
-tar zxvf vmd-1.9.3.src.tar.gz
-mv plugins vmd-1.9.3/
+wget https://istf.iitgn.ac.in/sites/default/files/Software/labsoft/tarballs/vmd-1.9.3.bin.LINUXAMD64-CUDA8-OptiX4-OSPRay111p1.opengl.tar.gz --no-check-certificate
+tar zxvf vmd-1.9.3.bin.LINUXAMD64-CUDA8-OptiX4-OSPRay111p1.opengl.tar.gz
 cd vmd-1.9.3
 ./configure
 cd src
@@ -364,8 +361,7 @@ cd ~
 ### Download and Install CHARMM ###
 mkdir -p $DIR/CHARMM
 cd $DIR/CHARMM
-cp -rpvf /home/ub/ch520/tarballs/charmm.tar.gz .
-#wget 10.0.137.150:/Public/SNB/tarballs/charmm.tar.gz
+wget https://istf.iitgn.ac.in/sites/default/files/Software/labsoft/tarballs/charmm.tar.gz --no-check-certificate
 tar zxvf charmm.tar.gz
 cd charmm
 ./configure
@@ -389,6 +385,8 @@ cd ~
 source $ENV_USER_PATH
 
 
+### Reboot the Machine ###
+#/usr/sbin/reboot
 
 ### Sending of Logs to Reviewer ###
 #ps2pdf /tmp/script.log
