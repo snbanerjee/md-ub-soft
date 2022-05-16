@@ -8,7 +8,7 @@
 #How to run: ./<script file name>		    #
 #Where to run: IITGN Computer Lab | Ubuntu System   #
 #Logs: /tmp/script.log				    #
-#For any error: report to helpdesk.istf@iitgn.ac.in #
+#For any error: report to snbanerjee@iitgn.ac.in    #
 #***************** End of README *******************#
 
 #!/bin/bash
