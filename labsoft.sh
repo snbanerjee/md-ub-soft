@@ -173,7 +173,7 @@ then
         }
 else
         {
-                echo "Error: Cmake not found in system or not declared in the environment Path. Please install Cmake by issuing the command 
+                echo "Error: Cmake not found in system or not declared in the environment Path. Installing Cmake by issuing the command 
 apt-get install build-essential
 mkdir -p $DIR/CMAKE
 cd $DIR/CMAKE
