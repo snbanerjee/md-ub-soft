@@ -152,9 +152,6 @@ sleep 1
 
 echo " " >> $Loc
 
-sleep 1
-
-echo " " >> $Loc
 
 ### Installation of OpenSSL-Dev package ###
 apt-get install -y libssl-dev
