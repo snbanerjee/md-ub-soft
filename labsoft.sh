@@ -1,4 +1,4 @@
-#******************* README ************************#
+#***************************************************#
 #This script is used to install MD related software #
 #This script to be run in root account without any  # 
 #options unless specified or needed                 #
@@ -14,6 +14,7 @@
 #!/bin/bash
 
 ### Log will be written in script.log under /tmp directory###
+rm -rf /tmp/script.log ## removing any prebuilt log
 touch /tmp/script.log
 Loc=/tmp/script.log
 
@@ -30,7 +31,7 @@ echo Number of Processors in the system is $Proc >> $Loc
 echo " " >> $Loc
 echo Number of Cores to be used during Compilation is $np >> $Loc
 INSTALL_USER=`whoami`
-ENV_USER=`cat /etc/passwd | grep bash | awk '(NR>1)' |  sed s/:/\\n/ | awk '{print $1; exit}'`
+ENV_USER=`cat /etc/passwd | grep bash | awk '(NR>1)' | sed -e 's/:.*//' |awk '{print $1;exit}'`
 ENV_USER_PATH=/home/$ENV_USER/.bashrc
 OS=`lsb_release -d | awk '{print $2}'`
 echo " " >> $Loc
@@ -132,7 +133,7 @@ sleep 1
 ### Checking of existance of GCC Gfortran G++ compilers ###
 Gcc_version=`gcc --version`
 ver3=`echo $?`
-if ["$ver3" -eq "0"]
+if [ "$ver3" -eq "0" ]
 then
         {
                 echo GCC version is $Gcc_version >> $Loc
@@ -243,7 +244,7 @@ echo " " >> $Loc
 mkdir -p $DIR/NAMD
 cd $DIR/NAMD
 wget https://istf.iitgn.ac.in/sites/default/files/Software/labsoft/tarballs/NAMD_2.14_Linux-x86_64-multicore.tar.gz --no-check-certificate
-tar xvf NAMD_2.14_Linux-x86_64-multicore.tar.gz
+tar zxvf NAMD_2.14_Linux-x86_64-multicore.tar.gz
 cd NAMD_2.14_Linux-x86_64-multicore
 export PATH=$PATH:"$DIR/NAMD/NAMD_2.14_Linux-x86_64-multicore" >> $ENV_USER_PATH
 source $ENV_USER_PATH
@@ -266,7 +267,7 @@ cd lammps-29Sep2021
 mkdir build
 cd build
 cmake ../cmake
-cmake --build .
+cmake --build -j $np.
 make install
 export PATH=$PATH:"$DIR/LAMMPS/lammps-29Sep2021/build" >> $ENV_USER_PATH
 source $ENV_USER_PATH
