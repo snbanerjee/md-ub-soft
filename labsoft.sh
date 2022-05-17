@@ -240,7 +240,7 @@ echo " " >> $Loc
 ### Download and Install NAMD-2.14 ###
 mkdir -p $DIR/NAMD
 cd $DIR/NAMD
-wget https://istf.iitgn.ac.in/sites/default/files/Software/labsoft/tarballs/NAMD_2.14_Linux-x86_64-multicore.tar.gz --no-check-certificate
+wget https://abc.def.pqr/sites/default/files/Software/labsoft/tarballs/NAMD_2.14_Linux-x86_64-multicore.tar.gz --no-check-certificate
 tar zxvf NAMD_2.14_Linux-x86_64-multicore.tar.gz
 cd NAMD_2.14_Linux-x86_64-multicore
 export PATH=$PATH:"$DIR/NAMD/NAMD_2.14_Linux-x86_64-multicore" >> $ENV_USER_PATH
@@ -337,7 +337,7 @@ cd ~
 apt install -y tcsh
 mkdir -p $DIR/VMD
 cd $DIR/VMD
-wget https://istf.iitgn.ac.in/sites/default/files/Software/labsoft/tarballs/vmd-1.9.3.bin.LINUXAMD64-CUDA8-OptiX4-OSPRay111p1.opengl.tar.gz --no-check-certificate
+wget https://abc.def.pqr/sites/default/files/Software/labsoft/tarballs/vmd-1.9.3.bin.LINUXAMD64-CUDA8-OptiX4-OSPRay111p1.opengl.tar.gz --no-check-certificate
 tar zxvf vmd-1.9.3.bin.LINUXAMD64-CUDA8-OptiX4-OSPRay111p1.opengl.tar.gz
 cd vmd-1.9.3
 ./configure
@@ -359,7 +359,7 @@ cd ~
 ### Download and Install CHARMM ###
 mkdir -p $DIR/CHARMM
 cd $DIR/CHARMM
-wget https://istf.iitgn.ac.in/sites/default/files/Software/labsoft/tarballs/charmm.tar.gz --no-check-certificate
+wget https://abc.def.pqr/sites/default/files/Software/labsoft/tarballs/charmm.tar.gz --no-check-certificate
 tar zxvf charmm.tar.gz
 cd charmm
 ./configure
